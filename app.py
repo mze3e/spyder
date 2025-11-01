@@ -390,7 +390,7 @@ def main():
     # show markdown + downloads
     if st.session_state.markdown:
         st.subheader("Markdown preview")
-        st.markdown(st.session_state.markdown)
+        st.markdown(st.session_state.markdown[:10000] + ("\n\n... (truncated)" if len(st.session_state.markdown) > 10000 else ""))
 
         st.sidebar.download_button(
             "Download Markdown",

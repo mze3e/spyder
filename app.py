@@ -316,10 +316,10 @@ def main():
     # show markdown + download
     if st.session_state.markdown:
         st.subheader("Markdown preview")
-        md_placeholder.markdown(st.session_state.markdown)
+        md_placeholder.markdown(st.session_state.markdown[:10000] + ("\n\n... (truncated)" if len(st.session_state.markdown) > 10000 else ""))
 
         md_bytes = st.session_state.markdown.encode("utf-8")
-        st.download_button(
+        st.sidebar.download_button(
             label="Download Markdown",
             data=md_bytes,
             file_name="site_export.md",
